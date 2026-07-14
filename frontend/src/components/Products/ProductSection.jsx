@@ -3,7 +3,17 @@ import ProductCard from "./ProductCard";
 import { products } from "../../data/products";
 import SectionTitle from "../Common/SectionTitle";
 
-const ProductSection = () => {
+const ProductSection = ({ searchQuery = "", onAddToCart }) => {
+  const filteredProducts = products.filter((product) => {
+    const query = searchQuery.toLowerCase().trim();
+    if (!query) return true;
+    return (
+      product.name.toLowerCase().includes(query) ||
+      product.category.toLowerCase().includes(query) ||
+      product.desc.toLowerCase().includes(query)
+    );
+  });
+
   return (
     <section id="products" className="py-24 bg-bg-green relative overflow-hidden">
       
@@ -28,19 +38,31 @@ const ProductSection = () => {
           subtitle="Featured Products"
         />
 
-        <div className="grid lg:grid-cols-4 md:grid-cols-2 gap-8 mt-16">
-          {products.map((product, index) => (
-            <motion.div
-              initial={{ opacity: 0, y: 40 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ delay: index * 0.08, duration: 0.7, ease: "easeOut" }}
-              key={product.id}
-            >
-              <ProductCard product={product} />
-            </motion.div>
-          ))}
-        </div>
+        {filteredProducts.length === 0 ? (
+          <div className="text-center py-20 bg-white/40 backdrop-blur-md rounded-[32px] border border-light-green/10 mt-16 max-w-xl mx-auto px-6 shadow-sm">
+            <svg className="w-16 h-16 text-gray-400 mx-auto mb-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="1.5">
+              <path strokeLinecap="round" strokeLinejoin="round" d="M21 21l-5.197-5.197m0 0A7.5 7.5 0 105.196 5.196a7.5 7.5 0 0010.607 10.607z" />
+            </svg>
+            <h4 className="text-xl font-bold text-luxury-charcoal font-playfair mb-2">No Products Found</h4>
+            <p className="text-sm text-gray-500 font-medium leading-relaxed">
+              We couldn't find any products matching &ldquo;{searchQuery}&rdquo;. Try checking the spelling or searching for another organic item.
+            </p>
+          </div>
+        ) : (
+          <div className="grid lg:grid-cols-4 md:grid-cols-2 gap-8 mt-16">
+            {filteredProducts.map((product, index) => (
+              <motion.div
+                initial={{ opacity: 0, y: 40 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ delay: index * 0.08, duration: 0.7, ease: "easeOut" }}
+                key={product.id}
+              >
+                <ProductCard product={product} onAddToCart={onAddToCart} />
+              </motion.div>
+            ))}
+          </div>
+        )}
       </div>
     </section>
   );
