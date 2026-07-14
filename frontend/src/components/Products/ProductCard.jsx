@@ -97,12 +97,12 @@ const ProductImageFallback = ({ category, name }) => {
 };
 
 const categoryBgColors = {
-  'Honey': 'from-[#FFFDF9] to-[#FDF4E3]',
-  'Milk Mix': 'from-[#F6FBF6] to-[#EAF6EC]',
-  'Breakfast': 'from-[#F8FCF8] to-[#EBF3EB]',
-  'Herbal Powder': 'from-[#FAFDF8] to-[#EEF7E8]',
-  'Pickles': 'from-[#FFF9F7] to-[#FFEFEA]',
-  'Country Sugar': 'from-[#FCFCFA] to-[#F8F3E8]',
+  'Honey': 'from-[#2a2318] via-[#44341f] to-[#1d1710]',
+  'Milk Mix': 'from-[#1d2b1d] via-[#243424] to-[#161f17]',
+  'Breakfast': 'from-[#1c241b] via-[#243123] to-[#151d16]',
+  'Herbal Powder': 'from-[#20261c] via-[#2a3423] to-[#171c15]',
+  'Pickles': 'from-[#2c1d1b] via-[#3b2422] to-[#1c1413]',
+  'Country Sugar': 'from-[#29231b] via-[#3d2f20] to-[#1b1511]',
 };
 
 const ProductCard = ({ product, onAddToCart }) => {
@@ -141,11 +141,11 @@ const ProductCard = ({ product, onAddToCart }) => {
     <motion.div
       whileHover={{ y: -6, scale: 1.01 }}
       transition={{ duration: 0.35, ease: "easeOut" }}
-      className="group bg-gradient-to-br from-[#fffdf8] via-[#f7ffe9] to-[#eef8e4] rounded-[24px] overflow-hidden shadow-[0_14px_35px_rgba(54,92,45,0.12)] hover:shadow-[0_18px_45px_rgba(54,92,45,0.2)] border border-[#dceecb] hover:border-[#7cb342]/40 hover:bg-gradient-to-br hover:from-[#f8fff0] hover:to-[#e2f0cb] transition-all duration-300 flex flex-col h-full relative"
+      className="group bg-gradient-to-br from-[#16241b] via-[#203224] to-[#111a14] rounded-[24px] overflow-hidden shadow-[0_14px_35px_rgba(8,16,10,0.35)] hover:shadow-[0_18px_45px_rgba(8,16,10,0.45)] border border-[#3c5237] hover:border-[#7cb342]/50 transition-all duration-300 flex flex-col h-full relative"
     >
       {/* Product Tag (e.g. Best Seller) */}
       {product.tag && (
-        <span className="absolute top-4 left-4 bg-gradient-to-r from-[#f59e0b] via-[#fbbf24] to-[#f59e0b] text-white text-[9px] uppercase tracking-widest font-black px-3.5 py-1.5 rounded-full z-10 shadow-[0_6px_16px_rgba(245,158,11,0.25)]">
+        <span className="absolute top-4 left-4 bg-gradient-to-r from-[#d89b2a] via-[#f3c867] to-[#d89b2a] text-[#231a0d] text-[9px] uppercase tracking-widest font-black px-3.5 py-1.5 rounded-full z-10 shadow-[0_6px_16px_rgba(216,155,42,0.24)]">
           {product.tag}
         </span>
       )}
@@ -154,7 +154,7 @@ const ProductCard = ({ product, onAddToCart }) => {
       <div className={`relative bg-gradient-to-br ${categoryBgColors[product.category] || "from-white to-light-green/10"} h-64 flex items-center justify-center overflow-hidden border-b border-light-green/10`}>
         
         {/* Soft background shape glow */}
-        <div className="absolute w-36 h-36 rounded-full bg-[#9acd6c]/30 blur-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none" />
+        <div className="absolute w-36 h-36 rounded-full bg-[#7cb342]/20 blur-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none" />
 
         {imgError ? (
           <ProductImageFallback category={product.category} name={product.name} />
@@ -168,47 +168,47 @@ const ProductCard = ({ product, onAddToCart }) => {
         )}
         
         {/* Weight indicator card */}
-        <span className="absolute bottom-4 right-4 bg-white/90 backdrop-blur-md text-luxury-charcoal text-[10px] tracking-wider uppercase font-bold px-2.5 py-1.5 rounded-xl border border-[#dceecb] shadow-sm">
+        <span className="absolute bottom-4 right-4 bg-[#0f1912]/90 backdrop-blur-md text-[#f5e9c8] text-[10px] tracking-wider uppercase font-bold px-2.5 py-1.5 rounded-xl border border-[#45643a] shadow-sm">
           {product.weight}
         </span>
       </div>
 
       {/* Details Frame */}
       <div className="p-6 flex flex-col flex-grow text-left">
-        <span className="text-[9px] text-primary-green uppercase tracking-widest font-black mb-1.5">
+        <span className="text-[9px] text-[#9bd565] uppercase tracking-widest font-black mb-1.5">
           {product.category}
         </span>
         
-        <h3 className="text-lg font-bold text-luxury-charcoal font-playfair tracking-wide leading-tight mb-2 group-hover:text-primary-green transition-colors duration-200">
+        <h3 className="text-lg font-bold text-[#f7f0dc] font-playfair tracking-wide leading-tight mb-2 group-hover:text-[#dff1b2] transition-colors duration-200">
           {product.name}
         </h3>
 
         {/* Rating Line */}
         <div className="flex items-center gap-1.5 mb-4">
           <div className="flex gap-0.5">{ratingStars}</div>
-          <span className="text-[10px] text-gray-400 font-bold tracking-wider mt-0.5 uppercase">
+          <span className="text-[10px] text-[#9aa792] font-bold tracking-wider mt-0.5 uppercase">
             {product.rating} ({product.reviews} Reviews)
           </span>
         </div>
 
-        <p className="text-sm text-gray-500 leading-relaxed mb-6 flex-grow font-medium">
+        <p className="text-sm text-[#b7c2a8] leading-relaxed mb-6 flex-grow font-medium">
           {product.desc}
         </p>
 
         {/* Price & Buy Now Group */}
         <div className="flex justify-between items-center pt-4 border-t border-light-green/10 mt-auto">
           <div>
-            <span className="text-[9px] uppercase tracking-widest text-gray-400 font-bold block mb-1">
+            <span className="text-[9px] uppercase tracking-widest text-[#9aa792] font-bold block mb-1">
               PRICE
             </span>
-            <span className="text-xl font-black text-dark-green font-playfair tracking-wide">
+            <span className="text-xl font-black text-[#f7e9c2] font-playfair tracking-wide">
               {product.price}
             </span>
           </div>
 
           <button 
             onClick={handleOrderClick}
-            className="flex items-center gap-2 bg-gradient-to-r from-primary-green to-dark-green hover:from-dark-green hover:to-emerald-950 text-white px-5 py-2.5 rounded-full text-xs font-bold uppercase tracking-wider transition-all duration-300 shadow-sm hover:shadow active:scale-95 border border-white/10"
+            className="flex items-center gap-2 bg-gradient-to-r from-[#6f8f2f] to-[#3f5d26] hover:from-[#7cb342] hover:to-[#4b6a2b] text-white px-5 py-2.5 rounded-full text-xs font-bold uppercase tracking-wider transition-all duration-300 shadow-sm hover:shadow active:scale-95 border border-white/10"
           >
             <FiShoppingBag className="text-xs" />
             <span>Order</span>
