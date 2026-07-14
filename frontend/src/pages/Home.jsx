@@ -6,7 +6,6 @@ import ProductSection from "../components/Products/ProductSection";
 import Benefits from "../components/Benefits/Benefits";
 import WhyChoose from "../components/WhyChooseUs/WhyChoose";
 import FarmToHome from "../components/Process/FarmToHome";
-import Testimonials from "../components/Testimonials/Testimonials";
 import Gallery from "../components/Gallery/Gallery";
 import Contact from "../components/Contact/Contact";
 import Footer from "../components/Footer/Footer";
@@ -71,7 +70,6 @@ const Home = () => {
       <Benefits />
       <WhyChoose />
       <FarmToHome />
-      <Testimonials />
       <Gallery />
       <Contact />
       <Footer />
