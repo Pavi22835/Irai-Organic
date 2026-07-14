@@ -3,11 +3,10 @@ import { FiMenu, FiSearch, FiUser, FiShoppingBag } from "react-icons/fi";
 import { motion } from "framer-motion";
 import MobileMenu from "./MobileMenu";
 
-const Navbar = () => {
+const Navbar = ({ searchQuery, setSearchQuery, cartCount = 0, onOpenCart }) => {
   const [isOpen, setIsOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
   const [activeSection, setActiveSection] = useState("home");
-  const [searchQuery, setSearchQuery] = useState("");
 
   useEffect(() => {
     const handleScroll = () => {
@@ -60,7 +59,7 @@ const Navbar = () => {
               <img
                 src="/logo.png"
                 alt="Irai Organic Logo"
-                className="h-10 w-10 object-contain rounded-full bg-white border border-primary-green/20"
+                className="h-10 w-auto max-w-[150px] object-contain bg-white/80 p-1 rounded-lg border border-primary-green/10"
               />
               <span className="font-extrabold text-lg text-[#2E7D32] tracking-tight font-playfair group-hover:text-dark-green transition">
                 Irai Organic
@@ -120,13 +119,13 @@ const Navbar = () => {
               </a>
 
               {/* Order Cart Button */}
-              <a
-                href="#contact"
+              <button
+                onClick={onOpenCart}
                 className="flex items-center gap-1.5 bg-primary-green hover:bg-dark-green text-white px-5 py-2.5 rounded-full font-bold text-xs uppercase tracking-wider transition-all duration-200 shadow-sm hover:shadow"
               >
                 <FiShoppingBag className="text-sm" />
-                <span>Order (0)</span>
-              </a>
+                <span>Order ({cartCount})</span>
+              </button>
             </div>
 
             {/* Mobile Navigation Toggle */}

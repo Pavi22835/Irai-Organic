@@ -1,5 +1,7 @@
 import { motion } from "framer-motion";
 import { FiArrowRight } from "react-icons/fi";
+import { BsFillLeafFill, BsShieldCheck } from "react-icons/bs";
+import { AiOutlineHeart } from "react-icons/ai";
 
 const Hero = () => {
   return (
@@ -51,18 +53,24 @@ const Hero = () => {
               </a>
             </div>
 
-            <div className="mt-12 grid grid-cols-3 gap-6 max-w-md">
-              <div className="flex flex-col items-center text-center rounded-lg bg-transparent p-2">
-                <div className="mb-2 text-2xl text-[#306E30]">🌿</div>
-                <p className="text-xs font-semibold text-[#2F442F]">100% Natural</p>
+            <div className="mt-12 flex flex-col gap-4 rounded-[28px] bg-white/70 p-4 shadow-[0_18px_35px_rgba(15,23,42,0.05)] backdrop-blur-xl sm:flex-row sm:items-center sm:justify-between sm:gap-0">
+              <div className="flex items-center gap-3 sm:border-r sm:border-gray-200 sm:pr-6 sm:py-3">
+                <span className="grid h-11 w-11 place-items-center rounded-full bg-[#E8F2E6] text-2xl text-[#2F5525]">
+                  <BsFillLeafFill />
+                </span>
+                <p className="text-sm font-semibold text-[#2F442F]">100% Natural</p>
               </div>
-              <div className="flex flex-col items-center text-center rounded-lg bg-transparent p-2">
-                <div className="mb-2 text-2xl">✖️</div>
-                <p className="text-xs font-semibold text-[#2F442F]">No Preservatives</p>
+              <div className="flex items-center gap-3 sm:border-r sm:border-gray-200 sm:px-6 sm:py-3">
+                <span className="grid h-11 w-11 place-items-center rounded-full bg-[#EDF7F1] text-2xl text-[#2F5525]">
+                  <BsShieldCheck />
+                </span>
+                <p className="text-sm font-semibold text-[#2F442F]">No Preservatives</p>
               </div>
-              <div className="flex flex-col items-center text-center rounded-lg bg-transparent p-2">
-                <div className="mb-2 text-2xl">❤️</div>
-                <p className="text-xs font-semibold text-[#2F442F]">Made with Love</p>
+              <div className="flex items-center gap-3 sm:pl-6 sm:py-3">
+                <span className="grid h-11 w-11 place-items-center rounded-full bg-[#FDEAEA] text-2xl text-[#B33A26]">
+                  <AiOutlineHeart />
+                </span>
+                <p className="text-sm font-semibold text-[#2F442F]">Made with Love</p>
               </div>
             </div>
           </motion.div>

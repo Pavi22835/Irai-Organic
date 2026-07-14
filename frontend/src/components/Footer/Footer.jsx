@@ -21,7 +21,7 @@ export default function Footer() {
               <img
                 src="/logo.png"
                 alt="Irai Organic Logo"
-                className="h-10 w-10 object-contain rounded-full bg-white p-0.5"
+                className="h-10 w-auto max-w-[150px] object-contain bg-white/80 p-1 rounded-lg border border-primary-green/10"
               />
               <h2 className="text-2xl font-bold font-playfair tracking-wide text-white">
                 Irai Organic
