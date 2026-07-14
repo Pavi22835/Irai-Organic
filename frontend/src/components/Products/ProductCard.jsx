@@ -105,7 +105,7 @@ const categoryBgColors = {
   'Country Sugar': 'from-[#29231b] via-[#3d2f20] to-[#1b1511]',
 };
 
-const ProductCard = ({ product, onAddToCart }) => {
+const ProductCard = ({ product, onAddToCart, variant = 'light' }) => {
   const [imgError, setImgError] = useState(false);
 
   // Helper to safely join BASE_URL with image path
@@ -141,12 +141,18 @@ const ProductCard = ({ product, onAddToCart }) => {
     <motion.div
       whileHover={{ y: -6, scale: 1.01 }}
       transition={{ duration: 0.35, ease: "easeOut" }}
-      className="group relative overflow-hidden rounded-[24px] border border-white/20 bg-white/10 backdrop-blur-xl shadow-[0_18px_45px_rgba(8,16,10,0.35)] hover:shadow-[0_22px_55px_rgba(8,16,10,0.45)] transition-all duration-300 flex flex-col h-full"
+      className={`
+        group relative overflow-hidden rounded-[24px] transition-all duration-300 flex flex-col h-full
+        ${variant === 'dark'
+          ? 'border border-[#163a21] bg-gradient-to-br from-[#0d2614] via-[#132f18] to-[#08160d] shadow-[0_20px_50px_rgba(4,8,5,0.35)] hover:shadow-[0_24px_60px_rgba(4,8,5,0.45)]'
+          : 'border border-white/20 bg-white/10 backdrop-blur-xl shadow-[0_18px_45px_rgba(8,16,10,0.35)] hover:shadow-[0_22px_55px_rgba(8,16,10,0.45)]'
+        }
+      `}
     >
-      <div className="absolute inset-0 bg-gradient-to-br from-white/25 via-white/10 to-transparent" />
-      <div className="absolute inset-0 rounded-[24px] border border-white/20" />
-      <div className="absolute -top-10 -left-10 h-24 w-24 rounded-full bg-white/20 blur-2xl" />
-      <div className="absolute bottom-0 right-0 h-28 w-28 rounded-full bg-[#7cb342]/20 blur-3xl" />
+      {variant === 'light' && <div className="absolute inset-0 bg-gradient-to-br from-white/25 via-white/10 to-transparent" />}
+      <div className={`absolute inset-0 rounded-[24px] ${variant === 'dark' ? 'border-white/6' : 'border-white/20'}`} />
+      {variant === 'light' && <div className="absolute -top-10 -left-10 h-24 w-24 rounded-full bg-white/20 blur-2xl" />}
+      <div className={`absolute bottom-0 right-0 h-28 w-28 rounded-full ${variant === 'dark' ? 'bg-[#2f6c32]/20' : 'bg-[#7cb342]/20'} blur-3xl`} />
       <div className="relative flex h-full flex-col">
       {/* Product Tag (e.g. Best Seller) */}
       {product.tag && (

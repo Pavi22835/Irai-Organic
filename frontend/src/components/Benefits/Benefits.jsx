@@ -13,25 +13,25 @@ const benefits = [
     icon: FaLeaf,
     title: "100% Natural Sourcing",
     desc: "Sourced direct from organic farmlands free from synthetic chemical treatments.",
-    color: "bg-[#EBF5E8]",
+    color: "bg-gradient-to-br from-[#e6f6e7] to-[#dff5de]",
   },
   {
     icon: FaHeartbeat,
     title: "Vitals & Immunity",
     desc: "Brimming with vital nutrients that bolster immunity and overall metabolic health.",
-    color: "bg-[#FDF4E3]",
+    color: "bg-gradient-to-br from-[#f7fff6] to-[#eafdeb]",
   },
   {
     icon: FaSeedling,
     title: "Cold Pressed Purity",
     desc: "Handcrafted in traditional slow stone-grinds to protect organic nutrients.",
-    color: "bg-[#F0F8EC]",
+    color: "bg-gradient-to-br from-[#f1fff3] to-[#e6fce8]",
   },
   {
     icon: FaAppleAlt,
     title: "High Bio-Absorption",
     desc: "Packed with active whole-food fibers, promoting healthy digestion.",
-    color: "bg-[#FFF0EB]",
+    color: "bg-gradient-to-br from-[#fffef8] to-[#f3fff0]",
   },
 ];
 
@@ -41,38 +41,36 @@ const BenefitCard = ({ item, index }) => {
 
   return (
     <motion.div
-      initial={{ opacity: 0, y: 40 }}
+      initial={{ opacity: 0, y: 30 }}
       whileInView={{ opacity: 1, y: 0 }}
-      viewport={{ once: true, amount: 0.2 }}
-      transition={{ delay: index * 0.1, duration: 0.7, ease: "easeOut" }}
-      whileHover={{ y: -8, scale: 1.03 }}
+      viewport={{ once: true }}
+      transition={{ delay: index * 0.08, duration: 0.6, ease: "easeOut" }}
+      whileHover={{ y: -6, scale: 1.02 }}
       onMouseMove={(e) => {
         const rect = e.currentTarget.getBoundingClientRect();
         setGlowPosition({ x: e.clientX - rect.left, y: e.clientY - rect.top });
       }}
       onMouseLeave={() => setGlowPosition({ x: 0, y: 0 })}
-      className="group relative flex h-full flex-col items-center overflow-hidden rounded-[24px] border border-white/20 bg-[#102318]/80 p-8 text-center shadow-[0_18px_45px_rgba(8,16,10,0.25)] backdrop-blur-xl transition-all duration-300 hover:border-[#8fcf43]/50"
+      className="group relative flex h-full flex-col items-center overflow-hidden rounded-[24px] border border-white/20 bg-gradient-to-br from-white/95 to-[#f7fff6] p-8 text-center shadow-sm backdrop-blur-sm transition-all duration-300 hover:border-[#7cb342]/30"
     >
       <div
-        className="absolute inset-0 rounded-[24px] opacity-80 transition-all duration-300 group-hover:opacity-100"
+        className="absolute inset-0 rounded-[24px] opacity-50 transition-all duration-300 group-hover:opacity-60"
         style={{
-          background: `radial-gradient(circle at ${glowPosition.x}px ${glowPosition.y}px, rgba(255,255,255,0.24), transparent 32%)`,
+          background: `radial-gradient(circle at ${glowPosition.x}px ${glowPosition.y}px, rgba(255,255,255,0.95), transparent 28%)`,
         }}
       />
-      <div className="absolute inset-0 rounded-[24px] border border-white/10" />
-      <motion.div
-        animate={{ y: [0, -4, 0], rotate: [0, 2, 0] }}
-        transition={{ duration: 4.4, repeat: Infinity, ease: "easeInOut", delay: index * 0.15 }}
-        className={`mb-6 flex h-16 w-16 items-center justify-center rounded-full ${item.color} shadow-inner transition-transform duration-300 group-hover:scale-110`}
-      >
-        <Icon className="text-2xl text-[#f7e8b3]" />
-      </motion.div>
 
-      <h3 className="mb-3 font-playfair text-lg font-bold text-[#1f2d1a] drop-shadow-[0_1px_1px_rgba(255,255,255,0.7)]">
+      <div className="absolute inset-0 rounded-[24px] border border-white/10" />
+
+      <div className={`mb-6 flex h-16 w-16 items-center justify-center rounded-full ${item.color} shadow-inner transition-transform duration-300 group-hover:scale-105 relative z-10`}>
+        <Icon className="text-2xl text-[#2c4b24]" />
+      </div>
+
+      <h3 className="mb-3 font-playfair text-lg font-bold text-[#12200f] relative z-10">
         {item.title}
       </h3>
 
-      <p className="flex-grow text-sm font-semibold leading-relaxed text-[#324129] drop-shadow-[0_1px_1px_rgba(255,255,255,0.6)]">
+      <p className="flex-grow text-sm font-medium leading-relaxed text-[#324129] relative z-10">
         {item.desc}
       </p>
     </motion.div>
@@ -81,9 +79,7 @@ const BenefitCard = ({ item, index }) => {
 
 const Benefits = () => {
   return (
-    <section id="benefits" className="relative overflow-hidden bg-white py-24">
-      <div className="pointer-events-none absolute left-[-10%] top-[20%] -z-10 h-[350px] w-[350px] rounded-full bg-primary-green/5 blur-[100px]" />
-
+    <section id="benefits" className="relative overflow-hidden py-24">
       <div className="relative z-10 mx-auto max-w-7xl px-6">
         <SectionTitle
           title="Health & Nutrition"

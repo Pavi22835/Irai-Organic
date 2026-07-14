@@ -53,12 +53,12 @@ const ProcessCard = ({ item, index }) => {
         setGlowPosition({ x: e.clientX - rect.left, y: e.clientY - rect.top });
       }}
       onMouseLeave={() => setGlowPosition({ x: 0, y: 0 })}
-      className="group relative flex h-full flex-col items-center overflow-hidden rounded-[28px] border border-white/20 bg-[#102318]/80 p-6 text-center shadow-[0_18px_45px_rgba(8,16,10,0.25)] backdrop-blur-xl transition-all duration-300 hover:border-[#8fcf43]/50"
+      className="group relative flex h-full flex-col items-center overflow-hidden rounded-[28px] border border-white/20 bg-gradient-to-br from-[#ffffff] via-[#fbfff8] to-[#f6fff3] p-6 text-center shadow-sm backdrop-blur-sm transition-all duration-300 hover:border-[#7cb342]/30"
     >
       <div
-        className="absolute inset-0 rounded-[28px] opacity-80 transition-all duration-300 group-hover:opacity-100"
+        className="absolute inset-0 rounded-[28px] opacity-60 transition-all duration-300 group-hover:opacity-70"
         style={{
-          background: `radial-gradient(circle at ${glowPosition.x}px ${glowPosition.y}px, rgba(255,255,255,0.24), transparent 32%)`,
+          background: `radial-gradient(circle at ${glowPosition.x}px ${glowPosition.y}px, rgba(255,255,255,0.92), transparent 28%)`,
         }}
       />
       <div className="absolute inset-0 rounded-[28px] border border-white/10" />
@@ -66,7 +66,7 @@ const ProcessCard = ({ item, index }) => {
       <motion.div
         animate={{ y: [0, -4, 0], rotate: [0, 2, 0] }}
         transition={{ duration: 4.2, repeat: Infinity, ease: "easeInOut", delay: index * 0.15 }}
-        className="relative mx-auto flex h-20 w-20 items-center justify-center rounded-full bg-[#244625]/80 text-[#f7e8b3] shadow-inner transition-all duration-300 group-hover:bg-[#3c6d2d] group-hover:text-white"
+        className="relative mx-auto flex h-20 w-20 items-center justify-center rounded-full bg-gradient-to-br from-[#e6f6e7] to-[#dff5de] text-[#1f2d1a] shadow-inner transition-all duration-300 group-hover:from-[#f0f9ef] group-hover:to-[#e0f6dd]"
       >
         <Icon className="text-3xl" />
         <span className="absolute -right-1.5 -top-1.5 flex h-6 w-6 items-center justify-center rounded-full bg-gradient-to-r from-[#d89b2a] to-[#f3c867] text-[10px] font-black text-[#231a0d] shadow-md">
@@ -87,8 +87,7 @@ const ProcessCard = ({ item, index }) => {
 
 const FarmToHome = () => {
   return (
-    <section id="process" className="relative overflow-hidden bg-bg-green py-24">
-      <div className="pointer-events-none absolute right-[-10%] top-[30%] -z-10 h-[400px] w-[400px] rounded-full bg-primary-green/5 blur-[100px]" />
+    <section id="process" className="relative overflow-hidden py-24">
 
       <div className="relative z-10 mx-auto max-w-7xl px-6">
         <SectionTitle

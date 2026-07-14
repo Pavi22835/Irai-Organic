@@ -58,7 +58,7 @@ const ProductSection = ({ searchQuery = "", onAddToCart }) => {
                 transition={{ delay: index * 0.08, duration: 0.7, ease: "easeOut" }}
                 key={product.id}
               >
-                <ProductCard product={product} onAddToCart={onAddToCart} />
+                <ProductCard product={product} onAddToCart={onAddToCart} variant="dark" />
               </motion.div>
             ))}
           </div>
