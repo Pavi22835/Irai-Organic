@@ -74,11 +74,11 @@ const ProcessCard = ({ item, index }) => {
         </span>
       </motion.div>
 
-      <h3 className="mb-2 mt-6 font-playfair text-lg font-bold text-[#f8f3d8]">
+      <h3 className="mb-2 mt-6 font-playfair text-lg font-bold text-[#fff9e8] drop-shadow-[0_1px_2px_rgba(0,0,0,0.5)]">
         {item.title}
       </h3>
 
-      <p className="text-sm font-medium leading-relaxed text-[#dce7c8]">
+      <p className="text-sm font-semibold leading-relaxed text-[#f3f6e5] drop-shadow-[0_1px_2px_rgba(0,0,0,0.45)]">
         {item.desc}
       </p>
     </motion.div>
