@@ -51,7 +51,7 @@ const BenefitCard = ({ item, index }) => {
         setGlowPosition({ x: e.clientX - rect.left, y: e.clientY - rect.top });
       }}
       onMouseLeave={() => setGlowPosition({ x: 0, y: 0 })}
-      className="group relative flex h-full flex-col items-center overflow-hidden rounded-[24px] border border-white/20 bg-gradient-to-br from-white/95 to-[#f7fff6] p-8 text-center shadow-sm backdrop-blur-sm transition-all duration-300 hover:border-[#7cb342]/30"
+      className="group relative flex h-full flex-col items-center overflow-hidden rounded-[24px] border border-gray-100/40 bg-gradient-to-br from-white to-[#f7fff6] p-8 text-center shadow-sm backdrop-blur-sm transition-all duration-300 hover:border-[#7cb342]/30"
     >
       <div
         className="absolute inset-0 rounded-[24px] opacity-50 transition-all duration-300 group-hover:opacity-60"
@@ -62,7 +62,7 @@ const BenefitCard = ({ item, index }) => {
 
       <div className="absolute inset-0 rounded-[24px] border border-white/10" />
 
-      <div className={`mb-6 flex h-16 w-16 items-center justify-center rounded-full ${item.color} shadow-inner transition-transform duration-300 group-hover:scale-105 relative z-10`}>
+      <div className={`mb-6 flex h-16 w-16 items-center justify-center rounded-full ${item.color} transition-transform duration-300 group-hover:scale-105 relative z-10`}>
         <Icon className="text-2xl text-[#2c4b24]" />
       </div>
 

@@ -53,7 +53,7 @@ const ProcessCard = ({ item, index }) => {
         setGlowPosition({ x: e.clientX - rect.left, y: e.clientY - rect.top });
       }}
       onMouseLeave={() => setGlowPosition({ x: 0, y: 0 })}
-      className="group relative flex h-full flex-col items-center overflow-hidden rounded-[28px] border border-white/20 bg-gradient-to-br from-[#ffffff] via-[#fbfff8] to-[#f6fff3] p-6 text-center shadow-sm backdrop-blur-sm transition-all duration-300 hover:border-[#7cb342]/30"
+      className="group relative flex h-full flex-col items-center overflow-hidden rounded-[28px] border border-gray-100/40 bg-gradient-to-br from-white via-[#fbfff8] to-[#f6fff3] p-6 text-center shadow-sm backdrop-blur-sm transition-all duration-300 hover:border-[#7cb342]/30"
     >
       <div
         className="absolute inset-0 rounded-[28px] opacity-60 transition-all duration-300 group-hover:opacity-70"
@@ -74,11 +74,11 @@ const ProcessCard = ({ item, index }) => {
         </span>
       </motion.div>
 
-      <h3 className="mb-2 mt-6 font-playfair text-lg font-bold text-[#1f2d1a] drop-shadow-[0_1px_1px_rgba(255,255,255,0.7)]">
+      <h3 className="mb-2 mt-6 font-playfair text-lg font-bold text-[#12200f]">
         {item.title}
       </h3>
 
-      <p className="text-sm font-semibold leading-relaxed text-[#324129] drop-shadow-[0_1px_1px_rgba(255,255,255,0.6)]">
+      <p className="text-sm font-semibold leading-relaxed text-[#324129]">
         {item.desc}
       </p>
     </motion.div>
