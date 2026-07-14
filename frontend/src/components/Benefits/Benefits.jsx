@@ -68,11 +68,11 @@ const BenefitCard = ({ item, index }) => {
         <Icon className="text-2xl text-[#f7e8b3]" />
       </motion.div>
 
-      <h3 className="mb-3 font-playfair text-lg font-bold text-[#fff9e8] drop-shadow-[0_1px_2px_rgba(0,0,0,0.5)]">
+      <h3 className="mb-3 font-playfair text-lg font-bold text-[#1f2d1a] drop-shadow-[0_1px_1px_rgba(255,255,255,0.7)]">
         {item.title}
       </h3>
 
-      <p className="flex-grow text-sm font-semibold leading-relaxed text-[#f3f6e5] drop-shadow-[0_1px_2px_rgba(0,0,0,0.45)]">
+      <p className="flex-grow text-sm font-semibold leading-relaxed text-[#324129] drop-shadow-[0_1px_1px_rgba(255,255,255,0.6)]">
         {item.desc}
       </p>
     </motion.div>

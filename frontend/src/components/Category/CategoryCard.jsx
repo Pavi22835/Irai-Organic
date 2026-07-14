@@ -19,16 +19,16 @@ const CategoryCard = ({ item }) => {
         <Icon className="text-2xl text-[#f5e9c8] group-hover:text-white transition duration-200" />
       </div>
 
-      <h3 className="text-lg font-bold text-[#f7f0dc] mb-2 font-playfair tracking-wide group-hover:text-[#dff1b2] transition duration-200">
+      <h3 className="text-lg font-bold text-[#1f2d1a] mb-2 font-playfair tracking-wide group-hover:text-[#263b1e] transition duration-200">
         {item.title}
       </h3>
 
-      <p className="text-xs text-[#b8c2a8] font-medium leading-relaxed max-w-[200px]">
+      <p className="text-xs text-[#324129] font-semibold leading-relaxed max-w-[200px]">
         {item.description}
       </p>
       
       {/* Underline link action */}
-      <div className="text-[10px] font-black text-[#d9efb4] mt-6 uppercase tracking-wider inline-flex items-center gap-1 group-hover:text-[#f7d98b] group-hover:gap-2 transition-all">
+      <div className="text-[10px] font-black text-[#2f451f] mt-6 uppercase tracking-wider inline-flex items-center gap-1 group-hover:text-[#4b6a2b] group-hover:gap-2 transition-all">
         <span>Explore</span>
         <span>&rarr;</span>
       </div>
