@@ -141,20 +141,24 @@ const ProductCard = ({ product, onAddToCart }) => {
     <motion.div
       whileHover={{ y: -6, scale: 1.01 }}
       transition={{ duration: 0.35, ease: "easeOut" }}
-      className="group bg-gradient-to-br from-[#16241b] via-[#203224] to-[#111a14] rounded-[24px] overflow-hidden shadow-[0_14px_35px_rgba(8,16,10,0.35)] hover:shadow-[0_18px_45px_rgba(8,16,10,0.45)] border border-[#3c5237] hover:border-[#7cb342]/50 transition-all duration-300 flex flex-col h-full relative"
+      className="group relative overflow-hidden rounded-[24px] border border-white/20 bg-white/10 backdrop-blur-xl shadow-[0_18px_45px_rgba(8,16,10,0.35)] hover:shadow-[0_22px_55px_rgba(8,16,10,0.45)] transition-all duration-300 flex flex-col h-full"
     >
+      <div className="absolute inset-0 bg-gradient-to-br from-white/25 via-white/10 to-transparent" />
+      <div className="absolute inset-0 rounded-[24px] border border-white/20" />
+      <div className="absolute -top-10 -left-10 h-24 w-24 rounded-full bg-white/20 blur-2xl" />
+      <div className="absolute bottom-0 right-0 h-28 w-28 rounded-full bg-[#7cb342]/20 blur-3xl" />
+      <div className="relative flex h-full flex-col">
       {/* Product Tag (e.g. Best Seller) */}
       {product.tag && (
-        <span className="absolute top-4 left-4 bg-gradient-to-r from-[#d89b2a] via-[#f3c867] to-[#d89b2a] text-[#231a0d] text-[9px] uppercase tracking-widest font-black px-3.5 py-1.5 rounded-full z-10 shadow-[0_6px_16px_rgba(216,155,42,0.24)]">
+        <span className="absolute top-4 left-4 z-10 rounded-full bg-gradient-to-r from-[#f4c96d] via-[#f7e3a8] to-[#d89b2a] px-3.5 py-1.5 text-[9px] font-black uppercase tracking-widest text-[#231a0d] shadow-[0_6px_16px_rgba(216,155,42,0.24)]">
           {product.tag}
         </span>
       )}
 
       {/* Product Image Frame */}
-      <div className={`relative bg-gradient-to-br ${categoryBgColors[product.category] || "from-white to-light-green/10"} h-64 flex items-center justify-center overflow-hidden border-b border-light-green/10`}>
-        
-        {/* Soft background shape glow */}
-        <div className="absolute w-36 h-36 rounded-full bg-[#7cb342]/20 blur-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none" />
+      <div className={`relative h-64 overflow-hidden border-b border-white/15 bg-gradient-to-br ${categoryBgColors[product.category] || "from-white to-light-green/10"}`}>
+        <div className="absolute inset-0 bg-[linear-gradient(135deg,rgba(255,255,255,0.16),rgba(255,255,255,0.02))]" />
+        <div className="absolute w-36 h-36 rounded-full bg-[#7cb342]/20 blur-2xl opacity-0 transition-opacity duration-500 pointer-events-none group-hover:opacity-100" />
 
         {imgError ? (
           <ProductImageFallback category={product.category} name={product.name} />
@@ -168,13 +172,13 @@ const ProductCard = ({ product, onAddToCart }) => {
         )}
         
         {/* Weight indicator card */}
-        <span className="absolute bottom-4 right-4 bg-[#0f1912]/90 backdrop-blur-md text-[#f5e9c8] text-[10px] tracking-wider uppercase font-bold px-2.5 py-1.5 rounded-xl border border-[#45643a] shadow-sm">
+        <span className="absolute bottom-4 right-4 rounded-xl border border-white/15 bg-[#0f1912]/80 px-2.5 py-1.5 text-[10px] font-bold uppercase tracking-wider text-[#f5e9c8] shadow-sm backdrop-blur-md">
           {product.weight}
         </span>
       </div>
 
       {/* Details Frame */}
-      <div className="p-6 flex flex-col flex-grow text-left">
+      <div className="relative flex flex-grow flex-col p-6 text-left">
         <span className="text-[9px] text-[#9bd565] uppercase tracking-widest font-black mb-1.5">
           {product.category}
         </span>
@@ -196,7 +200,7 @@ const ProductCard = ({ product, onAddToCart }) => {
         </p>
 
         {/* Price & Buy Now Group */}
-        <div className="flex justify-between items-center pt-4 border-t border-light-green/10 mt-auto">
+        <div className="mt-auto flex items-center justify-between border-t border-white/10 pt-4">
           <div>
             <span className="text-[9px] uppercase tracking-widest text-[#9aa792] font-bold block mb-1">
               PRICE
@@ -208,12 +212,13 @@ const ProductCard = ({ product, onAddToCart }) => {
 
           <button 
             onClick={handleOrderClick}
-            className="flex items-center gap-2 bg-gradient-to-r from-[#6f8f2f] to-[#3f5d26] hover:from-[#7cb342] hover:to-[#4b6a2b] text-white px-5 py-2.5 rounded-full text-xs font-bold uppercase tracking-wider transition-all duration-300 shadow-sm hover:shadow active:scale-95 border border-white/10"
+            className="flex items-center gap-2 rounded-full border border-white/15 bg-gradient-to-r from-[#6f8f2f] to-[#3f5d26] px-5 py-2.5 text-xs font-bold uppercase tracking-wider text-white shadow-sm transition-all duration-300 hover:from-[#7cb342] hover:to-[#4b6a2b] hover:shadow active:scale-95"
           >
             <FiShoppingBag className="text-xs" />
             <span>Order</span>
           </button>
         </div>
+      </div>
       </div>
     </motion.div>
   );
