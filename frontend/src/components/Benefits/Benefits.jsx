@@ -1,3 +1,4 @@
+import { useState } from "react";
 import { motion } from "framer-motion";
 import {
   FaLeaf,
@@ -34,49 +35,66 @@ const benefits = [
   },
 ];
 
+const BenefitCard = ({ item, index }) => {
+  const [glowPosition, setGlowPosition] = useState({ x: 0, y: 0 });
+  const Icon = item.icon;
+
+  return (
+    <motion.div
+      initial={{ opacity: 0, y: 40 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      viewport={{ once: true, amount: 0.2 }}
+      transition={{ delay: index * 0.1, duration: 0.7, ease: "easeOut" }}
+      whileHover={{ y: -8, scale: 1.03 }}
+      onMouseMove={(e) => {
+        const rect = e.currentTarget.getBoundingClientRect();
+        setGlowPosition({ x: e.clientX - rect.left, y: e.clientY - rect.top });
+      }}
+      onMouseLeave={() => setGlowPosition({ x: 0, y: 0 })}
+      className="group relative flex h-full flex-col items-center overflow-hidden rounded-[24px] border border-white/20 bg-[#102318]/80 p-8 text-center shadow-[0_18px_45px_rgba(8,16,10,0.25)] backdrop-blur-xl transition-all duration-300 hover:border-[#8fcf43]/50"
+    >
+      <div
+        className="absolute inset-0 rounded-[24px] opacity-80 transition-all duration-300 group-hover:opacity-100"
+        style={{
+          background: `radial-gradient(circle at ${glowPosition.x}px ${glowPosition.y}px, rgba(255,255,255,0.24), transparent 32%)`,
+        }}
+      />
+      <div className="absolute inset-0 rounded-[24px] border border-white/10" />
+      <motion.div
+        animate={{ y: [0, -4, 0], rotate: [0, 2, 0] }}
+        transition={{ duration: 4.4, repeat: Infinity, ease: "easeInOut", delay: index * 0.15 }}
+        className={`mb-6 flex h-16 w-16 items-center justify-center rounded-full ${item.color} shadow-inner transition-transform duration-300 group-hover:scale-110`}
+      >
+        <Icon className="text-2xl text-[#f7e8b3]" />
+      </motion.div>
+
+      <h3 className="mb-3 font-playfair text-lg font-bold text-[#f8f3d8]">
+        {item.title}
+      </h3>
+
+      <p className="flex-grow text-sm font-medium leading-relaxed text-[#dce7c8]">
+        {item.desc}
+      </p>
+    </motion.div>
+  );
+};
+
 const Benefits = () => {
   return (
-    <section id="benefits" className="py-24 bg-white relative overflow-hidden">
-      
-      {/* Background ambient detail */}
-      <div className="absolute left-[-10%] top-[20%] w-[350px] h-[350px] bg-primary-green/5 rounded-full blur-[100px] pointer-events-none -z-10" />
+    <section id="benefits" className="relative overflow-hidden bg-white py-24">
+      <div className="pointer-events-none absolute left-[-10%] top-[20%] -z-10 h-[350px] w-[350px] rounded-full bg-primary-green/5 blur-[100px]" />
 
-      <div className="max-w-7xl mx-auto px-6 relative z-10">
+      <div className="relative z-10 mx-auto max-w-7xl px-6">
         <SectionTitle
           title="Health & Nutrition"
           highlight="Benefits"
           subtitle="Health Benefits"
         />
 
-        <div className="grid lg:grid-cols-4 md:grid-cols-2 gap-8 mt-16">
-          {benefits.map((item, index) => {
-            const Icon = item.icon;
-
-            return (
-              <motion.div
-                key={index}
-                initial={{ opacity: 0, y: 30 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ delay: index * 0.1, duration: 0.6, ease: "easeOut" }}
-                whileHover={{ y: -6 }}
-                className="bg-white rounded-[24px] p-8 text-center border border-light-green/20 hover:border-primary-green/25 shadow-premium hover:shadow-premium-hover transition-all duration-300 flex flex-col items-center h-full relative overflow-hidden group"
-              >
-                {/* Visual Category Background Icon Frame */}
-                <div className={`w-16 h-16 rounded-full ${item.color} flex items-center justify-center mb-6 group-hover:scale-105 transition-transform duration-300`}>
-                  <Icon className="text-primary-green text-2xl" />
-                </div>
-
-                <h3 className="text-lg font-bold text-luxury-charcoal font-playfair mb-3">
-                  {item.title}
-                </h3>
-
-                <p className="text-xs text-gray-500 leading-relaxed flex-grow font-medium">
-                  {item.desc}
-                </p>
-              </motion.div>
-            );
-          })}
+        <div className="mt-16 grid gap-8 md:grid-cols-2 lg:grid-cols-4">
+          {benefits.map((item, index) => (
+            <BenefitCard key={item.title} item={item} index={index} />
+          ))}
         </div>
       </div>
     </section>
