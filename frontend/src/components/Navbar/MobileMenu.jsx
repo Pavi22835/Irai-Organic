@@ -29,7 +29,7 @@ const MobileMenu = ({ isOpen, setIsOpen, navItems = [], activeSection }) => {
                 <img
                   src="/logo.png"
                   alt="Irai Organic Logo"
-                  className="h-10 w-10 object-contain rounded-full border border-primary-green/20"
+                  className="h-10 w-auto max-w-[150px] object-contain bg-white/80 p-1 rounded-lg border border-primary-green/10"
                 />
                 <h2 className="text-xl font-bold text-dark-green font-playfair leading-none">
                   Irai Organic
