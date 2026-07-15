@@ -9,7 +9,7 @@ const Hero = () => {
       {/* Background Image Banner */}
       <div className="absolute inset-0 w-full h-full z-0">
         <img
-          src="/hero/hero-bg-new.png"
+          src="/hero/hero-bg.png"
           alt="Premium Organic Food Showcase"
           className="w-full h-full object-cover object-right md:object-center opacity-30 md:opacity-100 transition-opacity duration-700"
         />
